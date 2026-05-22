@@ -13,6 +13,16 @@ export const GifsApp = () => {
   };
 
   const handleSearch = (query: string) => {
+    // Añadir las busquedas anteriores
+    // primero limpiar el string
+    query.trim().toLowerCase();
+    // validar el tamaño del string query
+    if (query.length === 0) return;
+    // validar si el query ya estaba en los previous terms
+    if (previousTerms.includes(query)) return;
+    // mostrar las busquedas en el front
+    setPreviousTerms([query, ...previousTerms].splice(0, 8));
+
     console.log({ query });
   };
 
